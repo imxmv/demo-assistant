@@ -1,0 +1,60 @@
+<header
+  style="
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  "
+>
+  <div
+    style="
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    "
+  >
+    <div>
+      <h1 style="margin: 0;">DSG-Demo-Assistant</h1>
+    </div>
+
+    <span
+      tuiAppearance="outline"
+      style="
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 0.875rem;
+        border-radius: 999px;
+        font: var(--tui-font-text-s);
+      "
+    >
+      Шаг {{ currentStepIndex() + 1 }} из {{ steps().length }}
+    </span>
+  </div>
+
+  <progress
+    tuiProgressBar
+    style="width: 100%;"
+    [max]="steps().length"
+    [value]="progressValue()"
+  ></progress>
+
+  <nav
+    tuiStepper
+    [activeItemIndex]="currentStepIndex()"
+    style="overflow-x: auto; padding-bottom: 0.25rem;"
+  >
+    @for (step of steps(); track step.key; let index = $index) {
+      <button
+        tuiStep
+        type="button"
+        [disabled]="index > currentStepIndex()"
+        [stepState]="stepState(index)"
+        (click)="stepSelected.emit(index)"
+      >
+        {{ step.title }}
+      </button>
+    }
+  </nav>
+</header>

@@ -1,0 +1,105 @@
+<section
+  style="
+    flex: 1;
+    max-width: 760px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  "
+>
+  <h2 style="margin: 0;">{{ step().title }}</h2>
+
+  <p
+    style="
+      margin: 0;
+      color: var(--tui-text-secondary);
+      font: var(--tui-font-text-m);
+    "
+  >
+    {{ step().question }}
+  </p>
+
+  <div
+    style="
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    "
+  >
+    @if (step().controlType === 'input') {
+      <tui-textfield>
+        <input
+          tuiTextfield
+          [id]="step().key"
+          [ngModel]="value()"
+          [placeholder]="step().placeholder"
+          (ngModelChange)="fieldChanged.emit({ key: step().key, value: $event })"
+        />
+      </tui-textfield>
+    } @else {
+      <tui-textfield>
+        <textarea
+          tuiTextarea
+          [id]="step().key"
+          [max]="8"
+          [min]="4"
+          [ngModel]="value()"
+          [placeholder]="step().placeholder"
+          (ngModelChange)="fieldChanged.emit({ key: step().key, value: $event })"
+        ></textarea>
+      </tui-textfield>
+    }
+  </div>
+
+  <footer
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: auto;
+      flex-wrap: wrap;
+    "
+  >
+    <button
+      tuiButton
+      appearance="secondary"
+      type="button"
+      [disabled]="isFirstStep()"
+      (click)="back.emit()"
+    >
+      Назад
+    </button>
+
+    <div
+      style="
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 0.75rem;
+      "
+    >
+      @if (isLastStep()) {
+        <button
+          tuiButton
+          appearance="primary"
+          type="button"
+          [disabled]="!canMoveForward()"
+          (click)="finish.emit()"
+        >
+          Завершить
+        </button>
+      } @else {
+        <button
+          tuiButton
+          appearance="primary"
+          type="button"
+          [disabled]="!canMoveForward()"
+          (click)="next.emit()"
+        >
+          Продолжить
+        </button>
+      }
+    </div>
+  </footer>
+</section>

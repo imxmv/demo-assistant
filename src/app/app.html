@@ -1,0 +1,69 @@
+<tui-root>
+  <main
+    style="
+      min-height: 100vh;
+      padding: 2rem;
+      background:
+        radial-gradient(circle at top left, rgba(54, 115, 255, 0.24), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(0, 194, 168, 0.18), transparent 34%),
+        linear-gradient(180deg, #f3f7ff 0%, #eef2f8 48%, #edf6f3 100%);
+    "
+  >
+    <section
+      tuiAppearance="floating"
+      style="
+        width: min(1120px, 100%);
+        min-height: calc(100vh - 4rem);
+        margin: 0 auto;
+        padding: 2rem;
+        border-radius: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        box-shadow: 0 32px 80px rgba(27, 39, 94, 0.12);
+      "
+    >
+      @if (showWorkflow()) {
+        <app-workflow-header
+          [steps]="steps"
+          [currentStepIndex]="currentStepIndex()"
+          [progressValue]="progressValue()"
+          (stepSelected)="goToStep($event)"
+        />
+      }
+
+      @if (screen() === 'welcome') {
+        <app-welcome-screen (start)="startFlow()" />
+      }
+
+      @if (screen() === 'form') {
+        <app-step-form
+          [step]="currentStep()"
+          [stepIndex]="currentStepIndex()"
+          [isFirstStep]="currentStepIndex() === 0"
+          [isLastStep]="isLastStep()"
+          [value]="currentValue()"
+          [canMoveForward]="canMoveForward()"
+          (fieldChanged)="updateField($event.key, $event.value)"
+          (back)="goBack()"
+          (next)="goForward()"
+          (finish)="finishFlow()"
+          (restart)="restartFlow()"
+        />
+      }
+
+      @if (screen() === 'result') {
+        <app-results-screen
+          [steps]="steps"
+          [form]="form()"
+          [nestorText]="nestorText()"
+          [isGenerating]="isGenerating()"
+          [userCopyIcon]="copyIcon('user')"
+          [nestorCopyIcon]="copyIcon('nestor')"
+          (restart)="restartFlow()"
+          (copy)="copyText($event)"
+        />
+      }
+    </section>
+  </main>
+</tui-root>
