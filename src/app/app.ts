@@ -33,6 +33,7 @@ import {
     WorkflowHeaderComponent,
   ],
   templateUrl: './app.html',
+  styleUrl: './app.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class App {

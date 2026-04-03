@@ -1,0 +1,21 @@
+.welcome-screen {
+  flex: 1;
+  min-height: 540px;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.welcome-screen__title {
+  margin: 0;
+  font: var(--tui-font-heading-1);
+}
+
+.welcome-screen__description {
+  max-width: 34rem;
+  margin: 0;
+  color: var(--tui-text-secondary);
+  font: var(--tui-font-text-m);
+}

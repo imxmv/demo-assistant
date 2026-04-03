@@ -1,0 +1,39 @@
+.step-form {
+  flex: 1;
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.step-form__title {
+  margin: 0;
+}
+
+.step-form__question {
+  margin: 0;
+  color: var(--tui-text-secondary);
+  font: var(--tui-font-text-m);
+}
+
+.step-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.step-form__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.step-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}

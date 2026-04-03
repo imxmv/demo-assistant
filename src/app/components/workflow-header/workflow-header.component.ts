@@ -7,6 +7,7 @@ import { DemoStep } from '../../models/demo-flow.models';
   selector: 'app-workflow-header',
   imports: [TuiAppearance, TuiProgress, TuiStepper],
   templateUrl: './workflow-header.component.html',
+  styleUrl: './workflow-header.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WorkflowHeaderComponent {

@@ -1,31 +1,9 @@
-<section
-  style="
-    flex: 1;
-    max-width: 760px;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  "
->
-  <h2 style="margin: 0;">{{ step().title }}</h2>
+<section class="step-form">
+  <h2 class="step-form__title">{{ step().title }}</h2>
 
-  <p
-    style="
-      margin: 0;
-      color: var(--tui-text-secondary);
-      font: var(--tui-font-text-m);
-    "
-  >
-    {{ step().question }}
-  </p>
+  <p class="step-form__question">{{ step().question }}</p>
 
-  <div
-    style="
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    "
-  >
+  <div class="step-form__field">
     @if (step().controlType === 'input') {
       <tui-textfield>
         <input
@@ -51,16 +29,7 @@
     }
   </div>
 
-  <footer
-    style="
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-top: auto;
-      flex-wrap: wrap;
-    "
-  >
+  <footer class="step-form__footer">
     <button
       tuiButton
       appearance="secondary"
@@ -71,14 +40,7 @@
       Назад
     </button>
 
-    <div
-      style="
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-        gap: 0.75rem;
-      "
-    >
+    <div class="step-form__actions">
       @if (isLastStep()) {
         <button
           tuiButton

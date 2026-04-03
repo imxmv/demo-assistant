@@ -6,6 +6,7 @@ import { CopyTarget, DemoFormValue, DemoStep } from '../../models/demo-flow.mode
   selector: 'app-results-screen',
   imports: [TuiAppearance, TuiButton, TuiIcon, TuiLoader],
   templateUrl: './results-screen.component.html',
+  styleUrl: './results-screen.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ResultsScreenComponent {

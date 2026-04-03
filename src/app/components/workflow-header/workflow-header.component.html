@@ -1,49 +1,23 @@
-<header
-  style="
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  "
->
-  <div
-    style="
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-    "
-  >
-    <div>
-      <h1 style="margin: 0;">DSG-Demo-Assistant</h1>
-    </div>
+<header class="workflow-header">
+  <div class="workflow-header__top">
+    <h1 class="workflow-header__title">DSG-Demo-Assistant</h1>
 
-    <span
-      tuiAppearance="outline"
-      style="
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0.5rem 0.875rem;
-        border-radius: 999px;
-        font: var(--tui-font-text-s);
-      "
-    >
+    <span class="workflow-header__step" tuiAppearance="outline">
       Шаг {{ currentStepIndex() + 1 }} из {{ steps().length }}
     </span>
   </div>
 
   <progress
     tuiProgressBar
-    style="width: 100%;"
+    class="workflow-header__progress"
     [max]="steps().length"
     [value]="progressValue()"
   ></progress>
 
   <nav
     tuiStepper
+    class="workflow-header__stepper"
     [activeItemIndex]="currentStepIndex()"
-    style="overflow-x: auto; padding-bottom: 0.25rem;"
   >
     @for (step of steps(); track step.key; let index = $index) {
       <button

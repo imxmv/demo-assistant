@@ -3,8 +3,9 @@ import { TuiAppearance, TuiButton } from '@taiga-ui/core';
 
 @Component({
   selector: 'app-welcome-screen',
-  imports: [TuiAppearance, TuiButton],
+  imports: [TuiButton],
   templateUrl: './welcome-screen.component.html',
+  styleUrl: './welcome-screen.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WelcomeScreenComponent {

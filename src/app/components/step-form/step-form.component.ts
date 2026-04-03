@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { TuiAppearance, TuiButton, TuiTextfield } from '@taiga-ui/core';
+import { TuiButton, TuiTextfield } from '@taiga-ui/core';
 import { TuiTextarea } from '@taiga-ui/kit';
 import { DemoStep, StepKey } from '../../models/demo-flow.models';
 
@@ -8,12 +8,12 @@ import { DemoStep, StepKey } from '../../models/demo-flow.models';
   selector: 'app-step-form',
   imports: [
     FormsModule,
-    TuiAppearance,
     TuiButton,
     TuiTextarea,
     TuiTextfield,
   ],
   templateUrl: './step-form.component.html',
+  styleUrl: './step-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StepFormComponent {
